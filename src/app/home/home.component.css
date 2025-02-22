@@ -82,8 +82,7 @@ form #confirm {
 }
 
 form #confirm:hover {
-  background;
-  rgba(92, 92, 242, 0.959);
+  background: rgba(92, 92, 242, 0.959);
 }
 
 form #clear {
