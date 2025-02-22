@@ -1,5 +1,6 @@
-InterBank Front
-Projeto de Transferência Bancária Frontend
+Mazza Bank - Frontend
+
+Projeto de Agendamento de Transferências Bancárias
 
 🚀 Tecnologias Utilizadas
 
