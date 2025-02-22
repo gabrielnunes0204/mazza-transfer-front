@@ -1,0 +1,105 @@
+.menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background: rgba(72, 72, 212, 0.959);
+}
+
+.menu ul li,
+.menu h1 {
+  color: #fff;
+}
+
+.menu h1 {
+  font-size: 1.5rem;
+  font-family: "Oswald", serif;
+  letter-spacing: 1.25px;
+  cursor: pointer;
+}
+
+.menu ul li {
+  background: rgba(52, 52, 182, 0.959);
+  padding: 15px;
+  letter-spacing: 1px;
+  list-style: none;
+  cursor: pointer;
+}
+
+form {
+  width: 50%;
+  padding: 25px;
+  margin: 30px auto;
+  box-shadow: 1px 1px 4px #333;
+  border: 1px solid #333;
+  background: #eee;
+}
+
+form h2 {
+  text-align: center;
+}
+
+form div {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+
+form div article {
+  margin-bottom: 1rem;
+}
+
+form label {
+  font-weight: bold;
+  display: block;
+  margin: 5px 0;
+}
+
+form input,
+form input[type="date"] {
+  font-size: 1rem;
+  width: 20rem;
+  padding: 10px;
+  outline: none;
+}
+
+form #confirm,
+form #clear {
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 10px;
+  box-shadow: 1px 1px 4px #333;
+  color: #fff;
+  text-align: center;
+  letter-spacing: 0.75px;
+  width: 10rem;
+  border: none;
+  cursor: pointer;
+}
+
+form #confirm {
+  background: rgba(72, 72, 212, 0.959);
+}
+
+form #confirm:hover {
+  background;
+  rgba(92, 92, 242, 0.959);
+}
+
+form #clear {
+  background: #D60000;
+}
+
+form #clear:hover {
+  background: #f51313;
+}
+
+form .botoes {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+span {
+  color: red;
+}
