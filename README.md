@@ -52,3 +52,5 @@ Execute o servidor de desenvolvimento:
 ng serve
 
 A aplicação estará disponível em: http://localhost:4200
+
+Vídeo de demonstração do projeto: [![Demonstração do Projeto](https://img.youtube.com/vi/00F1djuFaE4/maxresdefault.jpg)](https://www.youtube.com/watch?v=00F1djuFaE4)
