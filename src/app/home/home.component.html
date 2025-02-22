@@ -15,7 +15,7 @@
       </article>
       <article>
         <label for="documentoUsuario"> Seu CPF <span> * </span> </label>
-        <input type="text" id="documentoUsuario" name="documentoUsuario" placeholder="ex: 12345678910" [(ngModel)]="filtroAgendamento.documentoUsuario" maxlength="14">
+        <input type="text" id="documentoUsuario" name="documentoUsuario" placeholder="ex: 12345678910" [(ngModel)]="filtroAgendamento.documentoUsuario" maxlength="11">
       </article>
     </div>
     <div>
@@ -34,8 +34,8 @@
         <input type="number" id="valor" name="valor" [(ngModel)]="filtroAgendamento.valorTransferencia">
       </article>
       <article>
-        <label for="dataHoraTransferencia"> Data/Hora transferência <span> * </span> </label>
-        <input type="datetime-local" [(ngModel)]="dataHoraTransferencia" id="dataHoraTransferencia" name="dataHoraTransferencia">
+        <label for="dataHoraAgendamento"> Data/Hora transferência <span> * </span> </label>
+        <input type="datetime-local" [(ngModel)]="dataHoraAgendamento" id="dataHoraAgendamento" name="dataHoraAgendamento">
       </article>
     </div>
 
