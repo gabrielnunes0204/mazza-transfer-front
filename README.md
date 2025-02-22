@@ -39,7 +39,7 @@ O front-end consome a API do back-end para listar todas as transferências feita
 📌 Como executar o projeto
 
 Clone o repositório:
-git clone https://github.com/seu-repositorio.git
+git clone https://github.com/gabrielnunes0204/mazza-transfer-front.git
 
 Acesse a pasta do projeto:
 Ex: cd mazza-transfer-front
