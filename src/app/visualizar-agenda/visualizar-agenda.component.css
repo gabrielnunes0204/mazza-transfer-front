@@ -1,0 +1,42 @@
+.menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background: rgba(72, 72, 212, 0.959);
+}
+
+.menu ul li,
+.menu h1 {
+  color: #fff;
+}
+
+.menu h1 {
+  cursor: pointer;
+}
+
+.menu ul li {
+  list-style: none;
+  cursor: pointer;
+}
+
+h2 {
+  text-align: center;
+  padding: 25px;
+}
+
+table {
+  margin: 0 auto;
+  text-align: center;
+  width: 80vw;
+}
+
+table th {
+  background: #ddd;
+}
+
+table td,
+table th {
+  padding: 20px;
+  border: 1px solid #333;
+}
