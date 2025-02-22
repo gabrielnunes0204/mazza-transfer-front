@@ -2,7 +2,7 @@
   <nav class="menu">
     <h1 [routerLink]="['']"> InterBank </h1>
     <ul>
-      <li [routerLink]="['/visualizar']"> Visualizar Agendamentos </li>
+      <li [routerLink]="['/visualizar']"> Visualizar seus agendamentos </li>
     </ul>
   </nav>
 
@@ -10,31 +10,31 @@
     <h2> Agendamento de Transferências </h2>
     <div>
       <article>
-        <label for="nomeUsuario"> Nome: </label>
+        <label for="nomeUsuario"> Seu nome <span> * </span> </label>
         <input type="string" id="nomeUsuario" name="nomeUsuario" [(ngModel)]="filtroAgendamento.nomeUsuario">
       </article>
       <article>
-        <label for="documentoUsuario"> CPF/RG: </label>
-        <input type="number" id="documentoUsuario" name="documentoUsuario" [(ngModel)]="filtroAgendamento.documentoUsuario">
+        <label for="documentoUsuario"> Seu CPF <span> * </span> </label>
+        <input type="text" id="documentoUsuario" name="documentoUsuario" placeholder="ex: 12345678910" [(ngModel)]="filtroAgendamento.documentoUsuario" maxlength="14">
       </article>
     </div>
     <div>
       <article>
-        <label for="contaOrigem"> Conta origem: </label>
+        <label for="contaOrigem"> Conta origem <span> * </span> </label>
         <input type="number" id="contaOrigem" name="contaOrigem" [(ngModel)]="filtroAgendamento.contaOrigem">
       </article>
       <article>
-        <label for="contaDestino"> Conta destino: </label>
+        <label for="contaDestino"> Conta destino <span> * </span> </label>
         <input type="number" id="contaDestino" name="contaDestino" [(ngModel)]="filtroAgendamento.contaDestino">
       </article>
     </div>
     <div>
       <article>
-        <label for="valor"> Valor transferência: </label>
+        <label for="valor"> Valor transferência <span> * </span> </label>
         <input type="number" id="valor" name="valor" [(ngModel)]="filtroAgendamento.valorTransferencia">
       </article>
       <article>
-        <label for="dataHoraTransferencia"> Data/Hora transferência: </label>
+        <label for="dataHoraTransferencia"> Data/Hora transferência <span> * </span> </label>
         <input type="datetime-local" [(ngModel)]="dataHoraTransferencia" id="dataHoraTransferencia" name="dataHoraTransferencia">
       </article>
     </div>
