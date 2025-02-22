@@ -12,10 +12,16 @@
 }
 
 .menu h1 {
+  font-size: 1.5rem;
+  font-family: "Oswald", serif;
+  letter-spacing: 1.25px;
   cursor: pointer;
 }
 
 .menu ul li {
+  background: rgba(52, 52, 182, 0.959);
+  padding: 15px;
+  letter-spacing: 1px;
   list-style: none;
   cursor: pointer;
 }
