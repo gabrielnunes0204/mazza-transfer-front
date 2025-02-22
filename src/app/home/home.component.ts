@@ -23,7 +23,7 @@ import { RetornoAgendamentoModel } from '../model/retorno-agendamento.model';
 export class HomeComponent implements OnInit {
 
   filtroAgendamento = {} as TransferenciaModel;
-  dataHoraTransferencia: any = null;
+  dataHoraAgendamento: any = null;
 
   constructor(private requestService: RequestService) { }
 
@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit {
       return;
     }
 
-    const dataUtc = new Date(this.dataHoraTransferencia + 'Z');
+    const dataUtc = new Date(this.dataHoraAgendamento);
     this.filtroAgendamento = {
       ...this.filtroAgendamento,
       dataHoraAgendamento: new Date(dataUtc.getTime() - dataUtc.getTimezoneOffset() * 60000)
@@ -90,7 +90,7 @@ export class HomeComponent implements OnInit {
       return false;
     }
 
-    if (this.filtroAgendamento.documentoUsuario?.length < 11) {
+    if (this.filtroAgendamento.documentoUsuario?.toString().length < 11) {
       Swal.fire('Aviso', 'O CPF deve conter 11 números.', 'info');
       return false;
     }
@@ -122,8 +122,8 @@ export class HomeComponent implements OnInit {
       return false;
     }
 
-    if (!this.dataHoraTransferencia) {
-      this.emitSwal("DATA/HORA TRANSFERÊNCIA");
+    if (!this.dataHoraAgendamento) {
+      this.emitSwal("DATA/HORA AGENDAMENTO");
       return false;
     }
 
@@ -145,6 +145,6 @@ export class HomeComponent implements OnInit {
 
   clear() {
     this.filtroAgendamento = {} as TransferenciaModel;
-    this.dataHoraTransferencia = null;
+    this.dataHoraAgendamento = null;
   }
 }
