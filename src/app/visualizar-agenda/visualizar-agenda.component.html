@@ -1,1 +1,44 @@
-<h1>Visualizar </h1>
+<div class="container">
+  <nav class="menu">
+    <h1 [routerLink]="['']"> InterBank </h1>
+    <ul>
+      <li [routerLink]="['']"> Agendar Transferência </li>
+    </ul>
+  </nav>
+
+  <h2 *ngIf="listaTransfer.length == 0"> Não dá dados disponíveis no momento </h2>
+
+  <section *ngIf="listaTransfer.length > 0">
+    <h2> Histórico de Agendamento de Transferências </h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Conta Origem</th>
+          <th>Conta Destino</th>
+          <th>Valor Transferência</th>
+          <th>Valor Taxa</th>
+          <th>Taxa+Transferência</th>
+          <th>Dt/Hr Agendamento</th>
+          <th>Dt/Hr Transferência</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of listaTransfer">
+          <td> {{ item.id }} </td>
+          <td> {{ item.nomeUsuario }} </td>
+          <td> {{ item.contaOrigem }} </td>
+          <td> {{ item.contaDestino }} </td>
+          <td> {{ item.valorTransferencia | currency:'BRL':'symbol' }} </td>
+          <td> {{ item.valorTaxa | currency:'BRL':'symbol' }} </td>
+          <td> {{ somatoriaTaxaTransferencia(
+            item.valorTransferencia,
+            item.valorTaxa) | currency:'BRL':'symbol' }} </td>
+          <td> {{ item.dataHoraAgendamento | date: 'dd/MM/yyyy HH:mm' }} </td>
+          <td> {{ item.dataHoraTransferencia | date: 'dd/MM/yyyy HH:mm' }} </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</div>
