@@ -5,7 +5,6 @@ import Swal from 'sweetalert2';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { TransferenciaModel } from '../model/transferencia.model';
-import { interval } from 'rxjs';
 import { RouterModule } from '@angular/router';
 import { RetornoAgendamentoModel } from '../model/retorno-agendamento.model';
 
@@ -28,16 +27,11 @@ export class HomeComponent implements OnInit {
 
   constructor(private requestService: RequestService) { }
 
-  ngOnInit(): void {
-    interval(100).subscribe(() => {
-      this.validFields();
-    });
-  }
+  ngOnInit(): void { }
 
   createRequest(): void {
 
-    if (!this.validFields()) {
-      Swal.fire('Aviso', 'É obrigatório preencher todos os campos.', 'info');
+    if (!this.validatedFields()) {
       return;
     }
 
@@ -47,8 +41,10 @@ export class HomeComponent implements OnInit {
     }
 
     const dataUtc = new Date(this.dataHoraTransferencia + 'Z');
-    this.filtroAgendamento.dataHoraTransferencia =
-      new Date(dataUtc.getTime() - dataUtc.getTimezoneOffset() * 60000);
+    this.filtroAgendamento = {
+      ...this.filtroAgendamento,
+      dataHoraAgendamento: new Date(dataUtc.getTime() - dataUtc.getTimezoneOffset() * 60000)
+    }
 
     this.requestService.createTransfer(this.filtroAgendamento).subscribe({
       next: (data: RetornoAgendamentoModel) => {
@@ -74,28 +70,60 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  validFields(): boolean {
+  validatedFields(): boolean {
+    this.filtroAgendamento.contaOrigem?.toString().replace('-', '');
+    this.filtroAgendamento.contaDestino?.toString().replace('-', '');
+
     if (!this.filtroAgendamento.nomeUsuario) {
+      this.emitSwal("NOME");
       return false;
     }
 
     if (!this.filtroAgendamento.documentoUsuario) {
+      this.emitSwal("CPF");
+      return false;
+    }
+
+    if (!this.filtroAgendamento.documentoUsuario?.match("^\\d+$")) {
+      Swal.fire('Aviso', 'O CPF deve ser preenchido somente com caracteres numéricos. ' +
+        'Remova pontuações caso tenha inserido.', 'info');
+      return false;
+    }
+
+    if (this.filtroAgendamento.documentoUsuario?.length < 11) {
+      Swal.fire('Aviso', 'O CPF deve conter 11 números.', 'info');
       return false;
     }
 
     if (!this.filtroAgendamento.contaOrigem) {
+      this.emitSwal("CONTA ORIGEM");
+      return false;
+    }
+
+    if (!this.filtroAgendamento.contaOrigem?.toString().match("^\\d+$")) {
+      Swal.fire('Aviso', 'A conta origem deve ser preenchida somente com caracteres numéricos. ' +
+        'Remova quaisquer caracteres especiais que tiver inserido.', 'info');
       return false;
     }
 
     if (!this.filtroAgendamento.contaDestino) {
+      this.emitSwal("CONTA DESTINO");
+      return false;
+    }
+
+    if (!this.filtroAgendamento.contaDestino?.toString().match("^\\d+$")) {
+      Swal.fire('Aviso', 'A conta destino deve ser preenchida somente com caracteres numéricos. ' +
+        'Remova quaisquer caracteres especiais que tiver inserido.', 'info');
       return false;
     }
 
     if (!this.filtroAgendamento.valorTransferencia) {
+      this.emitSwal("VALOR TRANSFERÊNCIA");
       return false;
     }
 
     if (!this.dataHoraTransferencia) {
+      this.emitSwal("DATA/HORA TRANSFERÊNCIA");
       return false;
     }
 
@@ -109,6 +137,10 @@ export class HomeComponent implements OnInit {
     }
 
     return true;
+  }
+
+  emitSwal(text: string) {
+    Swal.fire('Aviso', 'O campo ' + text + ' deve ser preenchido.', 'info');
   }
 
   clear() {
